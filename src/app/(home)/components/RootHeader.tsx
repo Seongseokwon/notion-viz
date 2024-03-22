@@ -11,9 +11,11 @@ const RootHeader = ({}: RootHeaderProps) => {
 
       <div>
         <ul className="flex gap-5">
-          <li>예시</li>
-          <li>가격</li>
-          <li>로그인</li>
+          <li className="cursor-pointer">예시</li>
+          <li className="cursor-pointer">
+            <Link href="/pricing">가격</Link>
+          </li>
+          <li className="cursor-pointer">로그인</li>
         </ul>
       </div>
     </header>
