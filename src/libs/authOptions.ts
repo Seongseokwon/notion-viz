@@ -18,6 +18,9 @@ const authOptions: AuthOptions = {
     async signIn({ user, account, profile, email, credentials }) {
       return true;
     },
+    async redirect({ url, baseUrl }) {
+      return url;
+    },
     async session({ session, user, token }) {
       return session;
     },
