@@ -1,24 +1,34 @@
 "use client";
+
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-interface RootHeaderProps {}
+interface HeaderProps {}
 
-const RootHeader = ({}: RootHeaderProps) => {
+const Header = ({}: HeaderProps) => {
   const session = useSession();
+  const router = useRouter();
+  const pathName = usePathname();
 
+  const handleMoveRoot = () => {
+    if (
+      session.status === "authenticated" &&
+      !pathName.includes("/dashboard")
+    ) {
+      router.push("/dashboard");
+    }
+  };
   return (
     <header className="flex justify-between px-8 py-5">
       <div>
-        <Link href="/">로고</Link>
+        <button type="button" onClick={handleMoveRoot}>
+          로고
+        </button>
       </div>
 
       <div>
         <ul className="flex gap-5">
-          <li className="cursor-pointer">예시</li>
-          <li className="cursor-pointer">
-            <Link href="/pricing">가격</Link>
-          </li>
           <li className="cursor-pointer">
             {session.status === "authenticated" ? (
               <button
@@ -50,4 +60,4 @@ const RootHeader = ({}: RootHeaderProps) => {
   );
 };
 
-export default RootHeader;
+export default Header;

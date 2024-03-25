@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
 import { ReactNode } from "react";
 
-interface DashboardLayoutProps {
+interface ChartLayoutProps {
   children: ReactNode;
 }
 
-const DashboardLayout = ({ children }: DashboardLayoutProps) => {
+const ChartLayout = ({ children }: ChartLayoutProps) => {
   return (
     <div className="flex flex-col h-full">
       <Header />
@@ -14,4 +14,4 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   );
 };
 
-export default DashboardLayout;
+export default ChartLayout;

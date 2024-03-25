@@ -3,13 +3,23 @@
 import { Fragment } from "react";
 import PricingCard from "./components/PricingCard";
 import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 interface PricingPageProps {}
 
 const PricingPage = ({}: PricingPageProps) => {
   const router = useRouter();
+  const session = useSession();
 
   const startFreePlan = () => {
+    if (session.status !== "authenticated") {
+      signIn("google", {
+        redirect: true,
+        callbackUrl: "http://localhost:3000/auth/google",
+      });
+      return;
+    }
+
     router.push("dashboard");
   };
 
