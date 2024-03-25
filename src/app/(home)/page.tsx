@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+
 import RootHeader from "./components/RootHeader";
 
 export default function Home() {
